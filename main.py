@@ -37,13 +37,13 @@ class MyApp(App):
         self.second = [13,10]
         self.sm = ScreenManager()
         screen = Screen(name = "select_character")
-        self.helth_1 = 3
-        self.helth_2 = 3
+        self.helth_1 = 5
+        self.helth_2 = 5
         self.helth_1_label = Label(text = "1 health: " + str(self.helth_1), pos = (0,0),size = (200,100))
         self.helth_2_label = Label(text = "2 health: " + str(self.helth_2), pos = (1300,0),size = (200,100))
         self.hod = 0
         self.oh = 0
-        self.prep = [[13,12],[13,13],[13,14],[2,7],[11,20],[13,5],[14,16],[10,16],[12,7],[9,8],[11,5],[8,7],[12,12],[7,6],[7,7],[7,8],[8,9],[9,8],[4,7],[14,6],[12,14],[6,9]]
+        self.prep = [[13,12],[13,13],[13,14],[2,7],[11,20],[13,5],[14,16],[10,16],[12,7],[9,8],[11,5],[8,7],[12,12],[7,6],[7,7],[7,8],[8,9],[9,8],[4,7],[14,6],[12,14],[6,9],[12,14],[14,15],[14,29],[10,30]]
         self.title = ""
         f = Widget()
         self.i = 0
@@ -120,7 +120,7 @@ class MyApp(App):
                             print("Саня ты где")
                             break
 
-            else:
+            elif(self.a[int(int(instance.id) / 30)][int(int(instance.id) % 30)][0:-1] != "g"):
                 for i in self.prep:
                     if((self.first[0] - int(int(instance.id) / 30))*i[1] + (int(int(instance.id) % 10) - self.first[1])* i[0] + (self.first[1] * int(int(instance.id) / 30) - int(int(instance.id) % 10) * self.first[0]) == 0):
                         print(1)
@@ -155,6 +155,9 @@ class MyApp(App):
                             break
 
             elif(self.a[int(int(instance.id) / 30)][int(int(instance.id) % 30)][0:-1] != "g"):
+                for i in self.prep:
+                    if((self.second[0] - int(int(instance.id) / 30))*i[1] + (int(int(instance.id) % 10) - self.second[1])* i[0] + (self.second[1] * int(int(instance.id) / 30) - int(int(instance.id) % 10) * self.second[0]) == 0):
+                        return 0
                 for y in range(15):
                     for x in range (30):
                         if(self.a[y][x] == str(instance.id) + 'r'):
